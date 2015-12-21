@@ -42,11 +42,14 @@ def dumpjson(screen_name,url):
 def parseimgurl(image):
     line = str(image).replace("\\","")
     line = line[2:len(line) - 7]
-    downloadpic(line)
-    print "Downloaded\t %s" % line
+    if downloadpic(line):
+        print "Downloaded\t %s" % line
+    else:
+        Print "Failed\t %s" % line
 
 def downloadpic(pic_url):
     urllib.urlretrieve(pic_url,os.path.basename(pic_url))
+    return true
 
 def main():
     screen_name = sys.argv[1]
